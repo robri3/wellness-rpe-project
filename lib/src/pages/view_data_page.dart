@@ -21,7 +21,6 @@ class ViewData extends StatelessWidget {
       initialData: [],
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.data != '') {
-          //print(snapshot.data);
           return ListView(
             children: _listaItems(snapshot.data),
           );
@@ -29,7 +28,6 @@ class ViewData extends StatelessWidget {
           return Center(
             child: Text('No hay datos'),
           );
-          //return Text('No hay datos');
         }
       },
     );
@@ -48,7 +46,6 @@ class ViewData extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
-                //leading: Icon(Icons.photo, color: Colors.red),
                 title: Center(child: Text('Nombre: ' + element['nombre'])),
                 subtitle: Column(
                   children: [
@@ -76,16 +73,19 @@ class ViewData extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              //leading: Icon(Icons.photo, color: Colors.red),
               title: Center(child: Text('Nombre: ' + tagObjsJson['nombre'])),
               subtitle: Column(
                 children: [
                   Text('Fecha del entrenamiento: ' + tagObjsJson['fecha']),
-                  Text('Nivel de dolor muscular: ' +
-                      tagObjsJson['dolor'].toString()),
+                  Text(
+                    'Nivel de dolor muscular: ' +
+                        tagObjsJson['dolor'].toString(),
+                  ),
                   Text('Nivel de fatiga: ' + tagObjsJson['fatiga'].toString()),
-                  Text('Nivel de intensidad: ' +
-                      tagObjsJson['intensidad'].toString()),
+                  Text(
+                    'Nivel de intensidad: ' +
+                        tagObjsJson['intensidad'].toString(),
+                  ),
                 ],
               ),
             ),
@@ -95,8 +95,6 @@ class ViewData extends StatelessWidget {
       opciones
         ..add(widgetTemp)
         ..add(Divider());
-
-      //print(jsonFileHandler.useJsonEncode(tagObjsJson).toString());
     }
     return opciones;
   }

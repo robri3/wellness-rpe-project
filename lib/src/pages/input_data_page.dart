@@ -83,7 +83,6 @@ class _InputDataState extends State<InputData> {
             heroTag: null,
             onPressed: () {
               _persistData(context);
-              //jsonFileHandler.deleteFile();
             },
             icon: Icon(Icons.add),
             backgroundColor: Colors.pink,
