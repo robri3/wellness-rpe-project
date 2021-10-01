@@ -146,7 +146,6 @@ class _InputDataState extends State<InputData> {
             picked.month.toString() +
             '-' +
             picked.year.toString();
-        //_fecha = picked.toString();
         _inputFieldDateContoller.text = _fecha;
       });
     }
@@ -176,10 +175,12 @@ class _InputDataState extends State<InputData> {
     List<DropdownMenuItem<int>> _listaTemp = [];
 
     _opciones.forEach((element) {
-      _listaTemp.add(DropdownMenuItem(
-        child: Text(element.toString()),
-        value: element,
-      ));
+      _listaTemp.add(
+        DropdownMenuItem(
+          child: Text(element.toString()),
+          value: element,
+        ),
+      );
     });
     return _listaTemp;
   }
@@ -194,9 +195,7 @@ class _InputDataState extends State<InputData> {
     } else {
       PlayerData playerData = PlayerData(_inputNameContoller.text,
           _inputFieldDateContoller.text, _optDolor, _optFatiga, _optIntensidad);
-
       String jsonPlayerInfo = jsonFileHandler.usePlayerJsonEncode(playerData);
-      //deleteFile();
       jsonFileHandler.readString().then((value) {
         if (value == '') {
           jsonFileHandler.writeString(jsonPlayerInfo);
@@ -207,16 +206,14 @@ class _InputDataState extends State<InputData> {
             List<String> tempS = [];
             tempS.add(jsonPlayerInfo);
             tagObjsJson.forEach((element) {
-              //print(json.encode(value));
               tempS.add(jsonFileHandler.useJsonEncode(element));
             });
 
             jsonFileHandler.writeString(tempS.toString());
           } else {
             List<dynamic> listaTemp = [];
-            listaTemp.add(value);
             listaTemp.add(jsonPlayerInfo);
-
+            listaTemp.add(value);
             String insertar = listaTemp.toString();
             jsonFileHandler.writeString(insertar);
           }
